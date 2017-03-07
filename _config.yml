@@ -5,7 +5,7 @@ permalink:           pretty
 
 # Setup
 title:               André Torres
-tagline:             'logger.debug(learning)'
+tagline:             'logger.debug("welcome")'
 description:         'I''m a software developer from Brazil who builds stuff and share about it.'
 url:                 http://andre2w.github.io
 baseurl:             ''
