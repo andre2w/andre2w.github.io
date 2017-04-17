@@ -1,6 +1,4 @@
-#  Mocking with mockito
-
-When runing unit tests you might have to interact with another classes, a class that calls your database or do some calculation over your data but you want to test in isolation. How to do this? Mocking those classes can be the solution, the mockito enters in the scene.  
+When running unit tests you might have to interact with another classes, a class that calls your database or do some calculation over your data but you want to test in isolation. How to do this? Mocking those classes can be the solution, the mockito enters in the scene.  
 
 
 We have this InvoiceService with two dependencies that are injected in the constructor. In this case we want to test in fully isolation so we can't really call any methods from those dependencies. So how we can test without instanciating those classes?
