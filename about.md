@@ -34,13 +34,13 @@ title: About
 <hr/>
 
 ## OTHER PROJECTS
-### Minimal Ticket    
+### [Minimal Ticket](https://github.com/andre2w/minimal-ticket)
 A ticket management system for internal tasks with Rich Text editing.<br/>
 **Stack**: Java 8, Spring boot, Spring Security, Hibernate, PostgreSQL, and Thymeleaf<br/>
-[GitHub](https://github.com/andre2w/minimal-ticket) - [Live Application](https://minimal-ticket.herokuapp.com) (admin/123)
+[Live Example](https://minimal-ticket.herokuapp.com) (admin/123)
 
-### EventTrack
+### [EventTrack](https://github.com/andre2w/EventTrack)
 An EventBrite clone I’ve created for studying purposes, where you can create events, invite people and manage the invitations.<br/>
 **Stack**: Ruby, Ruby on Rails, PostgresSQL <br/>
-[GitHub](https://eventtrack.herokuapp.com/) - [Live Application](https://eventtrack.herokuapp.com/)
+[Live Example](https://eventtrack.herokuapp.com/)
 
