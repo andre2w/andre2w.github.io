@@ -1,3 +1,13 @@
+---
+author: Andre Torres
+layout: post
+asset-type: post
+title: "Mocking with mockito"
+tags: 
+- java
+- mockito
+---
+
 When running unit tests you might have to interact with another classes, a class that calls your database or do some calculation over your data but you want to test in isolation. How to do this? Mocking those classes can be the solution, the mockito enters in the scene.  
 
 

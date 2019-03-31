@@ -8,7 +8,7 @@ title:               André Torres
 tagline:             'logger.debug("welcome")'
 description:         'I''m a software developer from Brazil who builds stuff and share about it.'
 url:                 http://andre2w.github.io
-baseurl:             '/'
+baseurl:             ''
 paginate:            5
 
 # About/contact
@@ -19,3 +19,6 @@ author:
 
 # Custom vars
 version:             1.0.0
+
+plugins:
+  - jekyll-paginate

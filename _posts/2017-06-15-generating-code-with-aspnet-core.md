@@ -1,3 +1,13 @@
+---
+author: Andre Torres
+layout: post
+asset-type: post
+title: "Generating code with ASP.Net Core"
+tags: 
+- c#
+- asp.net
+---
+
 One of the things that I really like in rails is tha hability to generate files using the scaffolding through the CLI, and recently I've started to learn ASP.Net Core. 
 
 The .Net Core is playing nice with the CLI using `dotnet` to create projects, manage migrations and packages, and I could even Debug applications using VS Code, but one thing was missing, the scaffolder for the views and controllers, in Rails even without scaffolding was fast to create an controller, but now I had to deal with namespaces and imports to create a simple controller.
