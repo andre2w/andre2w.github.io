@@ -5,7 +5,15 @@ title: About
 
 ## Experience
 
-### **Software Engineer L1 @ Openbet** <span style='float:right'>September 2017 - Today</span>
+### **Software Craftsman @ Codurance** <span style='float:right'>July 2018 - Present</span>
+**Description**: Working with delivery teams helping the creation of the solutions for the client and upskilling of the employees
+**Technologies**: Java, Postgres, Docker, Git, Kotlin, AWS EC2 
+
+### **Software Engineer L1 @ Openbet** <span style='float:right'>September 2017 - June 2018</span>
+**Description**: Develop backend code for payment systems that would integrate with gateways like Apple Pay, Visa, Pingit. Write integration test and help with the maintenance of the development infrastructure (Docker, Jenkins) 
+**Achievements**: Creating a library that facilitates the use of the internal APIs and a CLI application to speed up manual testing.
+**Technologies**: Tcl, Informix, Docker, Git, Ruby
+
 * **Description**: Develop software that powers the gaming market.
 * **Technologies**: Tcl, Informix, Docker, Git, Ruby
 
@@ -30,17 +38,3 @@ title: About
 ## LANGUAGES 
 * Portuguese - Native    
 * English - Advanced(Cambridge FCE Certificate )
-
-<hr/>
-
-## OTHER PROJECTS
-### [Minimal Ticket](https://github.com/andre2w/minimal-ticket)
-A ticket management system for internal tasks with Rich Text editing.<br/>
-**Stack**: Java 8, Spring boot, Spring Security, Hibernate, PostgreSQL, and Thymeleaf<br/>
-[Live Example](https://minimal-ticket.herokuapp.com) (admin/123)
-
-### [EventTrack](https://github.com/andre2w/EventTrack)
-An EventBrite clone I’ve created for studying purposes, where you can create events, invite people and manage the invitations.<br/>
-**Stack**: Ruby, Ruby on Rails, PostgresSQL <br/>
-[Live Example](https://eventtrack.herokuapp.com/)
-
