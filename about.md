@@ -6,15 +6,12 @@ title: About
 ## Experience
 
 ### **Software Craftsman @ Codurance** <span style='float:right'>July 2018 - Present</span>
-**Description**: Working with delivery teams helping the creation of the solutions for the client and upskilling of the employees
-**Technologies**: Java, Postgres, Docker, Git, Kotlin, AWS EC2 
+* **Description**: Working with delivery teams helping the creation of the solutions for the client and upskilling of the employees
+* **Technologies**: Java, Postgres, Docker, Git, Kotlin, AWS EC2 
 
 ### **Software Engineer L1 @ Openbet** <span style='float:right'>September 2017 - June 2018</span>
-**Description**: Develop backend code for payment systems that would integrate with gateways like Apple Pay, Visa, Pingit. Write integration test and help with the maintenance of the development infrastructure (Docker, Jenkins) 
-**Achievements**: Creating a library that facilitates the use of the internal APIs and a CLI application to speed up manual testing.
-**Technologies**: Tcl, Informix, Docker, Git, Ruby
-
-* **Description**: Develop software that powers the gaming market.
+* **Description**: Develop backend code for payment systems that would integrate with gateways like Apple Pay, Visa, Pingit. Write integration test and help with the maintenance of the development infrastructure (Docker, Jenkins) 
+* **Achievements**: Creating a library that facilitates the use of the internal APIs and a CLI application to speed up manual testing.
 * **Technologies**: Tcl, Informix, Docker, Git, Ruby
 
 ### **Software Developer @ SGE** <span style='float:right'>July 2016 - August 2017</span>
