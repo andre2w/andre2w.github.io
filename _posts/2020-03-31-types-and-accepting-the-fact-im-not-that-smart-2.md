@@ -13,7 +13,7 @@ abstract: Let's continue our conversation about types and see how to apply then 
 description: Let's continue our conversation about types and see how to apply then on the day to day
 ---
 
-We already spoke about the different type systems and how they work [here](https://andre2w.github.io/2020/02/25/types/), now it's time to write some code and see
+We already spoke about the different type systems and how they work [here]({% post_url 2020-03-21-types-and-accepting-the-fact-im-not-that-smart %}), now it's time to write some code and see
 how type can help us.
 
 ## The Flight Search Example
