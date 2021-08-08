@@ -5,7 +5,7 @@ title: About
 
 ## Experience
 
-### **Sofware Development Engineer II @ Amazon Web Services <span style='float:right'>March 2021 - Present</span>
+### **Sofware Development Engineer II @ AWS** <span style='float:right'>March 2021 - Present</span>
 
 ### **Software Craftsman @ Codurance** <span style='float:right'>July 2018 - December 2020</span>
 * **Description**: Working with delivery teams helping the creation of the solutions for the client and upskilling of the employees
