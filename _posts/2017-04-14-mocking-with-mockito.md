@@ -3,16 +3,17 @@ author: Andre Torres
 layout: post
 asset-type: post
 title: "Mocking with mockito"
-tags: 
+tags:
 - java
 - mockito
 ---
 
-When running unit tests you might have to interact with another classes, a class that calls your database or do some calculation over your data but you want to test in isolation. How to do this? Mocking those classes can be the solution, the mockito enters in the scene.  
+When running unit tests you might have to interact with another classes, a class that calls your database or do some calculation over your data but you want to test in isolation. How to do this? Mocking those classes can be the solution, the mockito enters in the scene.
 
 
 We have this InvoiceService with two dependencies that are injected in the constructor. In this case we want to test in fully isolation so we can't really call any methods from those dependencies. So how we can test without instanciating those classes?
-```
+
+```java
 public class InvoiceService {
     private InvoiceDao dao;
     private Mailer mailer;
@@ -21,7 +22,7 @@ public class InvoiceService {
         this.dao = dao;
         this.mailer = mailer;
     }
-	
+
     public void confirmCustomerInvoices(Customer customer) {
         List<Invoice> invoices = dao.customerOpenInvoices(customer);
         invoices.forEach(invoice -> {
@@ -35,8 +36,9 @@ public class InvoiceService {
 
 ## Creating mocks
 
-First we create our test and the setup, in the setup we instanciate the dependencies with mockito's `mock()` method: 
-```
+First we create our test and the setup, in the setup we instanciate the dependencies with mockito's `mock()` method:
+
+```java
 public class InvoiceServiceTest  {
 
     private Customer customer;
@@ -48,7 +50,7 @@ public class InvoiceServiceTest  {
     public void setup() {
         customer = new Customer();
         customer.setName("Sterling Archer");
-        
+
         mailer = mock(Mailer.class);
         dao = mock(InvoiceDao.class);
         service = new InvoiceService(dao,mailer);
@@ -63,8 +65,9 @@ The `mock()` method creates a instance that is manageable se we can explicity sa
 Now we start to write our first test case. We are going to test the `confirmCustomerInvoice` method.
 If you check the method, you can see that the first this that the method does is to call the dao and search for the open invoices, but we are not using any database, so how our dao will return something? That's Mockito's `when()` and `thenReturn()` methods, so we can say what the `dao.customerOpenInvoices(customer);` method is going to return.
 
-Follow the example: 
-```
+Follow the example:
+
+```java
 @Test
 public void confirmOpenInvoicesHasToChangeStatusToTrue() {
     Invoice invoice1 = new Invoice();
@@ -77,7 +80,7 @@ public void confirmOpenInvoicesHasToChangeStatusToTrue() {
     invoice3.setCustomer(customer);
 
     List<Invoice> invoices = Arrays.asList(invoice1,invoice2,invoice3);
-        
+
     when(dao.customerOpenInvoices(customer))
             .thenReturn(invoices);
 
@@ -86,13 +89,13 @@ public void confirmOpenInvoicesHasToChangeStatusToTrue() {
 }
 ```
 
-We crafted our response by creating 3 invoices and setting them in a list. Then we used `when(dao.customerOpenInvoices())` to mockito know when he is going to return something, and `.thenReturn(invoices)` to say what mockito has to return. 
+We crafted our response by creating 3 invoices and setting them in a list. Then we used `when(dao.customerOpenInvoices())` to mockito know when he is going to return something, and `.thenReturn(invoices)` to say what mockito has to return.
 
 ### Verifying methods execution
 
 Now we now how to make our mocks to have the desired return we can starting verifying if all methods in our code are being executed. We can do this using the `verify` method from Mockito. In this example we need to make sure that the `confirmCustomerInvoices` save the new state on the database and send a email to the client.
- 
-```
+
+```java
 @Test
 public void itHasToCallSaveAndMail() {
     Invoice invoice = new Invoice();
@@ -108,17 +111,17 @@ public void itHasToCallSaveAndMail() {
 }
 ```
 
-The verify method accpets an Object and you can call that object methods to see if they were really called inside the tested method. You can also add the `times()` argument to make sure that the method is called just once, or how many times you wanted. 
+The verify method accpets an Object and you can call that object methods to see if they were really called inside the tested method. You can also add the `times()` argument to make sure that the method is called just once, or how many times you wanted.
 
 Just to know, if you want to check if a method is not executed you can use the `never()` argument.
 
-### Intercepting Objects 
+### Intercepting Objects
 
-Sometimes you are testing something that is inside our class, we cant pass in the constructor or inject, but we have to test it. How we can deal with this kind of stuff? We can use interceptors, so we can retrive the object. 
+Sometimes you are testing something that is inside our class, we cant pass in the constructor or inject, but we have to test it. How we can deal with this kind of stuff? We can use interceptors, so we can retrive the object.
 
 Let's take a look at our `InvoiceService()`:
-```
 
+```java
 public class InvoiceService {
 
     private InvoiceDao dao;
@@ -144,10 +147,12 @@ public class InvoiceService {
     }
 }
 ```
-For every invoice we have an 10% tax, that is calculated by the Tax class and then saved by the TaxDAO. we have to check if the value of the tax is exactly 10% of the invoice value, but we can't inject a mock of the Tax class, so how we can achieve this? We use an interceptor. 
+
+For every invoice we have an 10% tax, that is calculated by the Tax class and then saved by the TaxDAO. we have to check if the value of the tax is exactly 10% of the invoice value, but we can't inject a mock of the Tax class, so how we can achieve this? We use an interceptor.
 
 Since we are injecting the TaxDAO and passing the Tax to the dao we can intercept it. Our written test is just like this:
-```
+
+```java
 @Test
 public void taxHasToBeTenPercentOfInvoiceAmount() {
     Invoice invoice = new Invoice();
@@ -173,6 +178,7 @@ public void taxHasToBeTenPercentOfInvoiceAmount() {
     assertEquals(tax.getValue(),invoice.getTotal() * 0.10,0.001);
 }
 ```
+
 How does this works? You create an `ArgumentCaptor<T>` for the calss you want to capture. Then you need to specify the right moment that you want to capture the argument and finally you use the `getValue()` method to return the object you need.
 
 After this you have an object to work with in your test case.
@@ -181,8 +187,9 @@ After this you have an object to work with in your test case.
 
 We want that our service keep working even when something bad happens, thats why testing only happy paths isn't a good thing, often things that shouldn't happen will happen. so how we can test exceptions with our mocks?
 
-With Mockito we can create exceptions when we want, so let's write a test were an exception will be raised: 
-```
+With Mockito we can create exceptions when we want, so let's write a test were an exception will be raised:
+
+```java
 @Test
 public void serviceShouldContinueInCaseOfError() {
     Invoice invoice1 = new Invoice();
@@ -206,7 +213,8 @@ public void serviceShouldContinueInCaseOfError() {
     verify(mailer).confirmationEmail(invoice3);
 }
 ```
-We have the `doThrow()` method where the exception to be raised is set and the `when()` method receive the mock that will raise the exception, and finally we call the method that is going to raise. 
+
+We have the `doThrow()` method where the exception to be raised is set and the `when()` method receive the mock that will raise the exception, and finally we call the method that is going to raise.
 
 
 #### You can check the entire example [here](https://github.com/andre2w/mockito-example)

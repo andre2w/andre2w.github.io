@@ -3,8 +3,10 @@ layout: default
 ---
 
 <div class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
+  <hgroup>
+    <h1>{{ page.title }}</h1>
+    <h2>{{ page.date | date_to_string }}</h2>
+  </hgroup>
   {{ content }}
 </div>
 
