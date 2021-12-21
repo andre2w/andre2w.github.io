@@ -8,6 +8,7 @@ layout: default
     <h2>{{ page.date | date_to_string }}</h2>
   </hgroup>
   {{ content }}
+
 </div>
 
 <div class="related">
@@ -15,12 +16,14 @@ layout: default
   <ul class="related-posts">
     {% for post in site.related_posts limit:3 %}
       <li>
-        <h3>
-          <a href="{{ site.baseurl }}{{ post.url }}">
-            {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
-          </a>
-        </h3>
+        <hgroup>
+          <h4>
+            <a href="{{ site.baseurl }}{{ post.url }}">
+              {{ post.title }}
+            </a>
+          </h4>
+          <h5>{{ post.date | date_to_string }}</h5>
+        </hgroup>
       </li>
     {% endfor %}
   </ul>

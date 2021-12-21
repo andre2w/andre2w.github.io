@@ -4,15 +4,25 @@ title: About
 ---
 
 {% for experience in site.data.about.experiences %}
-<hgroup>
-  <h3>{{ experience.company }}</h3>
-  <h4 style="display: flex; justify-content: space-between">
-    <span>{{ experience.position }}</span>
-    <span>{{ experience.start_date }} - {{ experience.end_date }}</span>
-  </h4>
-</hgroup>
-<p><strong>Description: </strong>{{ experience.description }}</p>
-<p><strong>Achievements: </strong>{{ experience.achievements }}</p>
-<p><strong>Technologies: </strong>{{ experience.technologies | join: ", " }}</p>
-<hr/>
+  <hgroup>
+    <h3>{{ experience.company }}</h3>
+    <h4 style="display: flex; justify-content: space-between">
+      <span>{{ experience.position }}</span>
+      <span>{{ experience.start_date }} - {{ experience.end_date }}</span>
+    </h4>
+  </hgroup>
+
+  {% if experience.description != nil %}
+    <p><strong>Description: </strong>{{ experience.description }}</p>
+  {% endif %}
+
+  {% if experience.achievements != nil %}
+    <p><strong>Achievements: </strong>{{ experience.achievements }}</p>
+  {% endif %}
+
+  {% if experience.technologies != nil %}
+    <p><strong>Technologies: </strong>{{ experience.technologies | join: ", " }}</p>
+  {% endif %}
+
+  <hr/>
 {% endfor %}
