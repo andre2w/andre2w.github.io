@@ -1,11 +1,12 @@
 ---
 layout: post
 asset-type: post
-title: Notes on Rust Memory Ownership and Borrowing
+title: "Notes on Rust: Memory Ownership and Borrowing"
 date: 2022-12-03 00:00:00 +00:00
 author: André Guelfi Torres
 tags:
     - rust
+    - notes on rust
 ---
 
 Rust has two ways to store variables during runtime.
