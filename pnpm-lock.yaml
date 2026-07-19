@@ -59,6 +59,9 @@ importers:
       tailwindcss:
         specifier: ^4.3.0
         version: 4.3.3
+      unist-util-visit:
+        specifier: ^5.1.0
+        version: 5.1.0
     devDependencies:
       oxfmt:
         specifier: ^0.59.0

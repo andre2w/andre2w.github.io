@@ -27,7 +27,8 @@
     "remark-gfm": "^4.0.1",
     "satori": "^0.26.0",
     "satori-html": "^0.3.2",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.0",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "oxfmt": "^0.59.0",
