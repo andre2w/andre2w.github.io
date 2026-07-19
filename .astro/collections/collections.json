@@ -1,0 +1,22 @@
+{
+  "collections": [
+    {
+      "hasSchema": true,
+      "name": "pages"
+    },
+    {
+      "hasSchema": true,
+      "name": "posts"
+    }
+  ],
+  "entries": {
+    "file:///home/andre/projects/andre2w.github.io/src/content/pages/about.md": "pages",
+    "file:///home/andre/projects/andre2w.github.io/src/content/posts/2017-04-14-mocking-with-mockito.md": "posts",
+    "file:///home/andre/projects/andre2w.github.io/src/content/posts/2020-07-21-packaging-with-packer.md": "posts",
+    "file:///home/andre/projects/andre2w.github.io/src/content/posts/2019-10-24-elastic-stack-introduction/index.md": "posts",
+    "file:///home/andre/projects/andre2w.github.io/src/content/posts/2019-04-11-test-doubles.md": "posts",
+    "file:///home/andre/projects/andre2w.github.io/src/content/posts/2020-03-31-types-and-accepting-the-fact-im-not-that-smart-2.md": "posts",
+    "file:///home/andre/projects/andre2w.github.io/src/content/posts/2020-03-21-types-and-accepting-the-fact-im-not-that-smart.md": "posts",
+    "file:///home/andre/projects/andre2w.github.io/src/content/posts/2019-04-25-containers-with-docker/index.md": "posts"
+  }
+}
