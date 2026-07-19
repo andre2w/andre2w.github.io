@@ -1,134 +1,191 @@
-# Lanyon
+# Lipi
 
-Lanyon is an unassuming [Jekyll](http://jekyllrb.com) theme that places content first by tucking away navigation in a hidden drawer. It's based on [Poole](http://getpoole.com), the Jekyll butler.
+A typography-first Astro template for long-form writing. Built for essays, travel notes, developer journals, and personal archives — publishing environments where the words come first.
 
-![Lanyon](https://f.cloud.github.com/assets/98681/1825266/be03f014-71b0-11e3-9539-876e61530e24.png)
-![Lanyon with open sidebar](https://f.cloud.github.com/assets/98681/1825267/be04a914-71b0-11e3-966f-8afe9894c729.png)
+**[Live Demo](https://astro-lipi.pages.dev)** · **[Source](https://github.com/thelocalhoststudio/lipi)**
 
+> **Lipi** (लिपि) is the Sanskrit word for script, the written form of a language.
 
-## Contents
+![Lipi preview](./public/lipi-preview.png)
 
-- [Usage](#usage)
-- [Options](#options)
-  - [Sidebar menu](#sidebar-menu)
-  - [Themes](#themes)
-  - [Reverse layout](#reverse-layout)
-- [Development](#development)
-- [Author](#author)
-- [License](#license)
-
-
-## Usage
-
-Lanyon is a theme built on top of [Poole](https://github.com/poole/poole), which provides a fully furnished Jekyll setup—just download and start the Jekyll server. See [the Poole usage guidelines](https://github.com/poole/poole#usage) for how to install and use Jekyll.
-
-
-## Options
-
-Lanyon includes some customizable options, typically applied via classes on the `<body>` element.
-
-
-### Sidebar menu
-
-Create a list of nav links in the sidebar by assigning each Jekyll page the correct layout in the page's [front-matter](http://jekyllrb.com/docs/frontmatter/).
-
-```
 ---
-layout: page
-title: About
+
+## What Lipi is for
+
+Lipi is a publishing template, not a general-purpose blog theme. It is designed for writers who publish chronologically and want their site to feel like a considered publication rather than a web application. It is not a good fit for sites that need sidebars, comment sections, newsletter embeds, or dashboards.
+
+The visual design takes its cues from the [Kami](https://kami.tw93.fun) design language: warm parchment ground, a constrained reading measure (68 ch), generous line-height, and a single terracotta accent. The output is static HTML. The typography holds under Cmd+P.
+
 ---
+
+## Features
+
+- **Literata** body type, **Manrope** UI type, **Fira Code** for code, **Caveat** for annotations
+- Light and dark themes via CSS custom properties, no JavaScript required for switching
+- Warm neutral colour scale with a single brand accent — fully customisable in one file
+- Timeline-based archive grouped by year
+- Tag pages and tag-driven related posts
+- Reading progress indicator via CSS scroll-driven animations
+- Dynamic per-post OG images generated with Satori — no manual image creation
+- Full-text search via Pagefind — static index, no external API, no tracking
+- RSS feed and sitemap included
+- Shiki syntax highlighting with light/dark token mapping
+- GitHub-Flavored Markdown and MDX support
+- Paper texture and print-aware styles (Cmd+P layout preserved)
+- Single configuration file: `configs/lipi.config.ts`
+- Minimal client-side JavaScript
+
+---
+
+## Getting Started
+
+### Use this template
+
+```sh
+npm create astro@latest -- --template thelocalhoststudio/lipi
 ```
 
-**Why require a specific layout?** Jekyll will return *all* pages, including the `atom.xml`, and with an alphabetical sort order. To ensure the first link is *Home*, we exclude the `index.html` page from this list by specifying the `page` layout.
+### Clone manually
 
-
-### Themes
-
-Lanyon ships with eight optional themes based on the [base16 color scheme](https://github.com/chriskempson/base16). Apply a theme to change the color scheme (mostly applies to sidebar and links).
-
-![Lanyon with red theme](https://f.cloud.github.com/assets/98681/1825270/be065110-71b0-11e3-9ed8-9b8de753a4af.png)
-![Lanyon with red theme and open sidebar](https://f.cloud.github.com/assets/98681/1825269/be05ec20-71b0-11e3-91ea-a9138ef07186.png)
-
-There are eight themes available at this time.
-
-![Available theme classes](https://f.cloud.github.com/assets/98681/1817044/e5b0ec06-6f68-11e3-83d7-acd1942797a1.png)
-
-To use a theme, add any one of the available theme classes to the `<body>` element in the `default.html` layout, like so:
-
-```html
-<body class="theme-base-08">
-  ...
-</body>
+```sh
+git clone https://github.com/thelocalhoststudio/lipi my-site
+cd my-site
+npm install
+npm run dev
 ```
 
-To create your own theme, look to the Themes section of [included CSS file](https://github.com/poole/lanyon/blob/master/public/css/lanyon.css). Copy any existing theme (they're only a few lines of CSS), rename it, and change the provided colors.
+The dev server starts at `http://localhost:4321`.
 
+---
 
-### Reverse layout
+## Configuration
 
-![Lanyon with reverse layout](https://f.cloud.github.com/assets/98681/1825265/be03f2e4-71b0-11e3-89f1-360705524495.png)
-![Lanyon with reverse layout and open sidebar](https://f.cloud.github.com/assets/98681/1825268/be056174-71b0-11e3-88c8-5055bca4307f.png)
+All site-level settings live in `configs/lipi.config.ts`. Open it, change the values, and the site reflects the changes.
 
-Reverse the page orientation with a single class.
+```ts
+// configs/lipi.config.ts
+const userConfig: UserConfig = {
+  title: "Your Publication",
+  description: "What your site is about.",
+  url: "https://yoursite.com",
+  author: "Your Name",
 
-```html
-<body class="layout-reverse">
-  ...
-</body>
+  navigation: [
+    { title: "Writing", url: "/posts" },
+    { title: "Archive", url: "/archive" },
+    { title: "About", url: "/about" },
+  ],
+
+  showThemeToggle: true,
+  showReadingTime: true,
+  heroVariant: "default", // "default" | "studio"
+};
 ```
 
+The full configuration reference is in the [Configuring Lipi](https://astro-lipi.pages.dev/posts/configuring-lipi) post included with the template.
 
-### Sidebar overlay instead of push
+---
 
-Make the sidebar overlap the viewport content with a single class:
+## Project Structure
 
-```html
-<body class="sidebar-overlay">
-  ...
-</body>
+```txt
+lipi/
+├── configs/
+│   └── lipi.config.ts        # All site settings live here
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── content/
+│   │   ├── posts/            # Markdown and MDX posts
+│   │   └── pages/            # About, home intro, colophon, etc.
+│   ├── styles/
+│   │   ├── theme.css         # Colour tokens and font variables
+│   │   ├── typography.css    # Prose styles
+│   │   └── global.css        # Base reset and utilities
+│   ├── components/
+│   ├── layouts/
+│   ├── pages/
+│   └── utils/
+├── astro.config.mjs
+└── package.json
 ```
 
-This will keep the content stationary and slide in the sidebar over the side content. It also adds a `box-shadow` based outline to the toggle for contrast against backgrounds, as well as a `box-shadow` on the sidebar for depth.
+Posts go in `src/content/posts/`. Subdirectories are supported. Folders prefixed with `_` are stripped from the URL (useful for year-based organisation without year segments in slugs).
 
-It's also available for a reversed layout when you add both classes:
+---
 
-```html
-<body class="layout-reverse sidebar-overlay">
-  ...
-</body>
+## Commands
+
+| Command           | Action                                      |
+| ----------------- | ------------------------------------------- |
+| `npm install`     | Install dependencies                        |
+| `npm run dev`     | Start dev server at `localhost:4321`        |
+| `npm run build`   | Build to `./dist/`, generate Pagefind index |
+| `npm run preview` | Preview the production build locally        |
+
+---
+
+## Customising
+
+### Colours
+
+The colour system is a single warm neutral scale (`--base-50` through `--base-950`) plus one brand colour (`--brand`). Change both in `src/styles/theme.css`:
+
+```css
+:root {
+  --base-50: #f5f4ed; /* ground */
+  --base-950: #141413; /* near-black */
+  --brand: #e85d2a; /* accent */
+}
 ```
 
-### Sidebar open on page load
+To create a named colour scheme, add a `[data-theme="name"]` block and set the `data-theme` attribute on `<html>`.
 
-Show an open sidebar on page load by modifying the `<input>` tag within the `sidebar.html` layout to add the `checked` boolean attribute:
+### Typefaces
 
-```html
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" checked>
-```
+Fonts are configured in `astro.config.mjs` under the `fonts` array. Swap the `name` field to any typeface available on Fontsource.
 
-Using Liquid you can also conditionally show the sidebar open on a per-page basis. For example, here's how you could have it open on the homepage only:
+---
 
-```html
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" {% if page.title =="Home" %}checked{% endif %}>
-```
+## Content Schema
 
-## Development
+### Posts (`src/content/posts/`)
 
-Lanyon has two branches, but only one is used for active development.
+| Field         | Type           | Required | Notes                                       |
+| ------------- | -------------- | -------- | ------------------------------------------- |
+| `title`       | string         | Yes      |                                             |
+| `description` | string         | Yes      | Shown as deck on featured post and in feeds |
+| `published`   | date           | Yes      | `YYYY-MM-DD`                                |
+| `updated`     | date           | No       | Shows "Updated on" in post metadata         |
+| `category`    | string         | No       | Defaults to `Travels`                       |
+| `tags`        | string[]       | No       | Drives related posts                        |
+| `cover`       | image / string | No       | Overrides the auto-generated OG image       |
+| `draft`       | boolean        | No       | Excluded from production builds             |
+| `lang`        | string         | No       | Per-post language override                  |
 
-- `master` for development.  **All pull requests should be to submitted against `master`.**
-- `gh-pages` for our hosted site, which includes our analytics tracking code. **Please avoid using this branch.**
+### Pages (`src/content/pages/`)
 
+| Field         | Type    | Required |
+| ------------- | ------- | -------- |
+| `title`       | string  | Yes      |
+| `description` | string  | No       |
+| `updated`     | date    | Yes      |
+| `draft`       | boolean | No       |
 
-## Author
+---
 
-**Mark Otto**
-- <https://github.com/mdo>
-- <https://twitter.com/mdo>
+## Credits
 
+- Typography inspired by the [Kami](https://kami.tw93.fun) design language
+- Body typeface: [Literata](https://fonts.google.com/specimen/Literata) by TypeTogether
+- UI typeface: [Manrope](https://fonts.google.com/specimen/Manrope) by Mikhail Sharanda
+- Monospace: [Fira Code](https://github.com/tonsky/FiraCode) by Nikita Prokopov
+- Annotation: [Caveat](https://fonts.google.com/specimen/Caveat) by Pablo Impallari
+- Built with [Astro](https://astro.build), [Tailwind CSS v4](https://tailwindcss.com)
+- Search powered by [Pagefind](https://pagefind.app)
+
+---
 
 ## License
 
-Open sourced under the [MIT license](LICENSE.md).
-
-<3
+MIT — made by [The Localhost Studio](https://github.com/thelocalhoststudio).
